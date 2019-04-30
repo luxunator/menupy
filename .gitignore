@@ -1,0 +1,4 @@
+#Packaging / pypi
+build/
+dist/
+*.egg-info/
