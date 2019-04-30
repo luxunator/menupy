@@ -10,6 +10,7 @@ setuptools.setup(
 	author_email="luxunator@pm.me",
 	url="https://github.com/luxunator/menupy",
 	description="Interactive Python Menu",
+	packages=['menupy'],
 	keywords='menu menupy curses',
 	long_description=long_description,
 	long_description_content_type="text/markdown",
@@ -19,6 +20,6 @@ setuptools.setup(
 		'Intended Audience :: Developers',
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
-        "Operating System :: OS Independent",
+        "Operating System :: OS Independent"
     ]
 	)
