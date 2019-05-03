@@ -1,5 +1,7 @@
 # menupy
-[![MIT License](https://img.shields.io/badge/license-MIT-red.svg)](https://github.com/luxunator/menupy/blob/master/LICENSE)
+[![PyPI](https://img.shields.io/pypi/v/menupy.svg)](https://pypi.org/project/menupy/)
+[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/menupy.svg)](https://pypi.org/project/menupy/)
+[![PyPI - License](https://img.shields.io/pypi/l/menupy.svg)](https://github.com/luxunator/menupy/blob/master/LICENSE)
 
 Interactive Python Menu
 

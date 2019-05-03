@@ -3,6 +3,10 @@ import curses
 
 class Menu:
 
+    """
+        **A Base class for all menus and holds colors. Not to be used directly.**
+    """
+
     colors = {
         'black': curses.COLOR_BLACK,
         'red': curses.COLOR_RED,
@@ -22,6 +26,25 @@ class Menu:
 
 
 class OptionMenu(Menu):
+
+    """
+        **Menu With Options to Select**
+
+        Create menu and add options for selection
+
+        :param title: Title to display on menu
+        :type title: str
+        :param cur: Menu cursor look
+        :type cur: str
+        :param title_color: Color for title text
+        :type title_color: color
+        :param title_bg_color: Color for title background
+        :type title_bg_color: color
+        :param cur_color: Color for cursor
+        :type cur_color: color
+        :param cur_bg_color: Color for cursor background
+        :type cur_bg_color: color
+    """
 
     def __init__(self, title, cur='->', title_color='white',
                  title_bg_color='black', cur_color='white',
@@ -55,6 +78,18 @@ class OptionMenu(Menu):
         screen.refresh()
 
     def add_option(self, option, color='white', bg_color='black'):
+
+        """
+            Add option to your OptionMenu object
+
+            :param option: Option to be displayed
+            :type option: str
+            :param color: Color for option text
+            :type color: color
+            :param bg_color: Color for option background
+            :type bg_color: color
+        """
+
         self.menu_list.update({option: {'color': color,
                                         'bg_color': bg_color}})
 
@@ -88,11 +123,45 @@ class OptionMenu(Menu):
                 break
 
     def run(self):
+
+        """
+            Display Option Menu
+
+            :return: Selected Option
+            :rtype: str
+
+        """
+
         selected_option = curses.wrapper(self._run)
         return selected_option
 
 
 class InputMenu(Menu):
+
+    """
+        **Menu With Input Labels and Fields**
+
+        Create menu and add input label
+
+        :param title: Title to display on menu
+        :type title: str
+        :param cur: Menu cursor look
+        :type cur: str
+        :param submit: Text to display for submit button
+        :type submit: str
+        :param title_color: Color for title text
+        :type title_color: color
+        :param title_bg_color: Color for title background
+        :type title_bg_color: color
+        :param cur_color: Color for cursor
+        :type cur_color: color
+        :param cur_bg_color: Color for cursor background
+        :type cur_bg_color: color
+        :param submit_color: Color for submit button text
+        :type submit_color: color
+        :param submit_bg_color: Color for submit button background
+        :type submit_bg_color: color
+    """
 
     def __init__(self, title, cur='->', submit='Submit',
                  title_color='white', title_bg_color='black',
@@ -171,6 +240,26 @@ class InputMenu(Menu):
     def add_input(self, option, input_text='', color='white',
                   bg_color='black', input_color='white',
                   input_bg_color='black', input_length=20):
+
+        """
+            Add option to your InputMenu object
+
+            :param option: Label for input to be displayed
+            :type option: str
+            :param input_text: Default text to be displayed in input field
+            :type input_text: str
+            :param color: Color for label text
+            :type color: color
+            :param bg_color: Color for label background
+            :type bg_color: color
+            :param input_color: Color for input text
+            :type input_color: color
+            :param input_bg_color: Color for input background
+            :type input_bg_color: color
+            :param input_length: Length of input field
+            :type input_length: int
+        """
+
         self.menu_list.update({option: {'input_text': input_text,
                                         'color': color,
                                         'bg_color': bg_color,
@@ -216,5 +305,14 @@ class InputMenu(Menu):
                     self._print_screen(screen, selected, edit=True)
 
     def run(self):
+
+        """
+            Display Input Menu
+
+            :return: Input Labels and Fields
+            :rtype: dict
+
+        """
+
         selected_option = curses.wrapper(self._run)
         return selected_option
