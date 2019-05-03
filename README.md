@@ -9,6 +9,9 @@ Interactive Python Menu
 
 CLI Menu creation with easy, fast, flexible usage for the programmer, and a clean layout for their users.
 
+## Documentation
+Documentation is available at [https://menupy.readthedocs.io/en/latest/](https://menupy.readthedocs.io/en/latest/)
+
 # Examples
 **Option Menu**
 ```python
