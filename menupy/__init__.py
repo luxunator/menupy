@@ -77,7 +77,7 @@ class OptionMenu(Menu):
 
         screen.refresh()
 
-    def add_option(self, option, color='white', bg_color='black'):
+    def add_option(self, option, ret='', color='white', bg_color='black'):
 
         """
             Add option to your OptionMenu object
@@ -90,7 +90,8 @@ class OptionMenu(Menu):
             :type bg_color: color
         """
 
-        self.menu_list.update({option: {'color': color,
+        self.menu_list.update({option: {'ret': ret,
+                                        'color': color,
                                         'bg_color': bg_color}})
 
     def _run(self, screen):
@@ -119,7 +120,9 @@ class OptionMenu(Menu):
             elif key == curses.KEY_ENTER or key in [10, 13]:
                 for index, (option, _) in enumerate(self.menu_list.items()):
                     if index == selected:
-                        return option
+                        return {option: keys['ret']
+                            for option, keys in self.menu_list.items()}
+
                 break
 
     def run(self):
