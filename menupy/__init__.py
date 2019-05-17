@@ -4,7 +4,7 @@ import curses
 class Menu:
 
     """
-        **A Base class for all menus and holds colors. Not to be used directly.**
+        **A Base class. Not to be used directly.**
     """
 
     colors = {
@@ -59,7 +59,7 @@ class OptionMenu(Menu):
         screen.attron(curses.color_pair(1))
         screen.addstr(0, 1, self.title)
         screen.attroff(curses.color_pair(1))
-        for index, (option, settings) in enumerate(self.menu_list.items()):
+        for index, (option, _) in enumerate(self.menu_list.items()):
             x = len(self.cur) + 1
             y = index + 2
             option_color = index + 3
@@ -77,7 +77,7 @@ class OptionMenu(Menu):
 
         screen.refresh()
 
-    def add_option(self, option, color='white', bg_color='black'):
+    def add_option(self, option, color='white', bg_color='black', ret=None):
 
         """
             Add option to your OptionMenu object
@@ -88,10 +88,13 @@ class OptionMenu(Menu):
             :type color: color
             :param bg_color: Color for option background
             :type bg_color: color
+            :param ret: Custom Return value
+            :type ret: Any
         """
 
         self.menu_list.update({option: {'color': color,
-                                        'bg_color': bg_color}})
+                                        'bg_color': bg_color,
+                                        'ret': ret}})
 
     def _run(self, screen):
         curses.curs_set(0)
@@ -117,9 +120,10 @@ class OptionMenu(Menu):
             elif key == curses.KEY_DOWN and selected < len(self.menu_list)-1:
                 selected += 1
             elif key == curses.KEY_ENTER or key in [10, 13]:
-                for index, (option, _) in enumerate(self.menu_list.items()):
+                for index, (option,
+                            settings) in enumerate(self.menu_list.items()):
                     if index == selected:
-                        return option
+                        return settings['ret'] if settings['ret'] else option
                 break
 
     def run(self):

@@ -5,7 +5,7 @@ with open("README.md", "r") as f:
 
 setuptools.setup(
     name="menupy",
-    version="1.0.1",
+    version="1.0.2",
     author="luxunator",
     author_email="luxunator@pm.me",
     url="https://github.com/luxunator/menupy",
