@@ -23,7 +23,6 @@ NewMenu.add_option("Option Selection #2", color="red")
 NewMenu.add_option("Option Selection #3", color="green")
 result = NewMenu.run()
 ```
-![](http://i67.tinypic.com/344ys60.jpg)
 
 **Input Menu**
 ```python
@@ -35,7 +34,6 @@ NewMenu.add_input("Input #2", color="magenta")
 NewMenu.add_input("Input #3", color="yellow", input_text="default", input_color="blue")
 result = NewMenu.run()
 ```
-![](http://i63.tinypic.com/rgwgvs.jpg)
 
 ## License
 This project is licensed under the terms of the [MIT License](https://github.com/luxunator/menupy/blob/master/LICENSE).
